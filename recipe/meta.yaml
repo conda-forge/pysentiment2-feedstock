@@ -17,7 +17,7 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6,<3.10  # See depreciation warning
+    - python >=3.6,<3.10  # See DeprecationWarning
   run:
     - nltk >=2.0
     - pandas
