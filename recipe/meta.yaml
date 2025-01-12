@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: ec1a3c5b8a53fb4beb8ad8d8b591c28ea13163a452fd044d698fba29d97e1185
 
 build:
   noarch: python
-  number: 2
+  number: 3
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
     - pip
-    - python >=3.6,<3.10  # See DeprecationWarning
+    - python {{ python_min }}  # See DeprecationWarning
   run:
     - nltk >=2.0
     - pandas
-    - python >=3.6,<3.10
+    - python >={{ python_min }},<3.10
 
 test:
   imports:
@@ -32,6 +32,7 @@ test:
   requires:
     - pip
     - pytest
+    - python {{ python_min }}
   source_files:
     - tests
 
